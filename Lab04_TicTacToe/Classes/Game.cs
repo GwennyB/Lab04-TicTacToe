@@ -90,12 +90,10 @@ namespace Lab04_TicTacToe.Classes
 				if( a == "X" && b == "X"  && c == "X" )
                 {
                     Winner = PlayerOne;
-                    return true;
                 }
                 if (a == "O" && b == "O" && c == "O")
                 {
                     Winner = PlayerTwo;
-                    return true;
                 }
             }
 			return false;
@@ -120,16 +118,14 @@ namespace Lab04_TicTacToe.Classes
 			{
               
 				PlayerOne.IsTurn = false;
-
-              
 				PlayerTwo.IsTurn = true;
 			}
 			else
 			{
 				PlayerOne.IsTurn = true;
 				PlayerTwo.IsTurn = false;
-			}
-		}
+            }
+        }
 
 
 	}
