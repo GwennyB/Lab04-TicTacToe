@@ -75,7 +75,10 @@ namespace Lab04_TicTacToe.Classes
 			// Given all the winning conditions, Determine the winning logic. 
 			for (int i = 0; i < winners.Length; i++)
 			{
-				Position p1 = Player.PositionForNumber(winners[i][0]);
+                // FEEDBACK TO INSTRUCTIONAL STAFF:  
+                // Using 'p1' and 'p2' here creates confusion and reduces readability since elsewhere those are used to indicate PlayerOne and PlayerTwo.
+                // Recommend changing to 'posOne', 'posTwo', 'posThree' or other var that suggests it's a Position rather than a Player.
+                Position p1 = Player.PositionForNumber(winners[i][0]);
 				Position p2 = Player.PositionForNumber(winners[i][1]);
 				Position p3 = Player.PositionForNumber(winners[i][2]);
 
@@ -84,10 +87,17 @@ namespace Lab04_TicTacToe.Classes
 				string c = Board.GameBoard[p3.Row, p3.Column];
 
 				// TODO:  Determine a winner has been reached. 
-				// return true if a winner has been reached. 
-			
-			}
-
+				if( a == "X" && b == "X"  && c == "X" )
+                {
+                    Winner = PlayerOne;
+                    return true;
+                }
+                if (a == "O" && b == "O" && c == "O")
+                {
+                    Winner = PlayerTwo;
+                    return true;
+                }
+            }
 			return false;
 		}
 
