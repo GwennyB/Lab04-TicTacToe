@@ -26,6 +26,7 @@ namespace Lab04_TicTacToe.Classes
 
 		/// <summary>
 		/// Activate the Play of the game
+        /// Manage game state
 		/// </summary>
 		/// <returns>Winner</returns>
 		public Player Play()
@@ -135,7 +136,7 @@ namespace Lab04_TicTacToe.Classes
 		}
 
 		/// <summary>
-		/// End one players turn and activate the other
+		/// End one player's turn and activate the other
 		/// </summary>
 		public void SwitchPlayer()
 		{

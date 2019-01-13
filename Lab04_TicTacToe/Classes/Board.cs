@@ -16,7 +16,9 @@ namespace Lab04_TicTacToe.Classes
 			{"7", "8", "9"},
 		};
 
-
+        /// <summary>
+        /// Displays the game board in its current state of play
+        /// </summary>
 		public void DisplayBoard()
 		{
             Console.WriteLine("\n Let's Play Tic-Tac-Toe!\n");

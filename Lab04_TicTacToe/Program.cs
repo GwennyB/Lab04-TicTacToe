@@ -7,7 +7,9 @@ namespace Lab04_TicTacToe
     {
         static void Main(string[] args)
         {
+            // set up player 1
             Player p1 = new Player();
+            // get/validate name
             try
             {
 
@@ -23,9 +25,12 @@ namespace Lab04_TicTacToe
                 throw;
             }
             p1.Marker = "X";
+            // Player 1 plays first
             p1.IsTurn = true;
 
+            // set up player 2
             Player p2 = new Player();
+            // get/validate name
             try
             {
                 do
@@ -40,6 +45,8 @@ namespace Lab04_TicTacToe
                 throw;
             }
             p2.Marker = "O";
+
+            // player instructions and start
             Console.Clear();
             Console.WriteLine($"\nWelcome, {p1.Name} and {p2.Name}!\n");
             Console.WriteLine($"{p1.Name}, you'll play {p1.Marker}'s.");
@@ -48,14 +55,17 @@ namespace Lab04_TicTacToe
             Console.WriteLine("Press ENTER when you're ready to start.");
             Console.ReadLine();
 
+            // launch game, and keep playing new games until players choose to exit
             bool keepPlaying = true;
             while(keepPlaying)
             {
                 Game game = new Game(p1, p2);
                 Player winner = game.Play();
 
+                // game results
                 Console.WriteLine($"{winner.Name} wins! Would you like to play another round?");
                 Console.WriteLine("(Enter 'y' to play again, or press ENTER to quit.)");
+                // choose whether to exit or play again
                 try
                 {
                     string playAgain = Console.ReadLine();

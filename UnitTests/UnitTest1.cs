@@ -84,10 +84,10 @@ namespace UnitTests
         }
 
         /// <summary>
-        /// Validates that all valid input strings return th correct coordinates
+        /// Validates that all valid number selections return the correct coordinates
         /// </summary>
-        /// <param name="entered"></param>
-        /// <param name="returned"></param>
+        /// <param name="entered"> test inputs - all valid input strings </param>
+        /// <param name="returned"> test inputs - correct coordinates for each valid input string </param>
         [Theory]
         [InlineData( "1", new[] { 0, 0 } )]
         [InlineData( "2", new[] { 0, 1 } )]
@@ -107,6 +107,10 @@ namespace UnitTests
             Assert.Equal(coordinates.Column, response.Column);
         }
 
+        /// <summary>
+        /// Validates that invalid number selections return null
+        /// </summary>
+        /// <param name="entered"> test data: selected 0 (out of range) and 55 (multiple digits, but each digit is in range) to test </param>
         [Theory]
         [InlineData(0)]
         [InlineData(55)]
