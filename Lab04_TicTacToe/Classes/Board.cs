@@ -19,8 +19,19 @@ namespace Lab04_TicTacToe.Classes
 
 		public void DisplayBoard()
 		{
-			
-			//TODO: Output the board to the console
+            Console.WriteLine("\n Let's Play Tic-Tac-Toe!\n");
+            //TODO: Output the board to the console
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Write("     ");
+                for (int k = 0; k < 3; k++)
+                {
+                    Console.Write($" [ {GameBoard[i, k]} ] ");
+                }
+                Console.Write("\n");
+            }
+            Console.WriteLine("\n\n");
+            Console.ReadLine();
 		
 		}
 	}
