@@ -83,6 +83,38 @@ namespace UnitTests
             Assert.False(testPlayer1.IsTurn);
         }
 
+        /// <summary>
+        /// Validates that all valid input strings return th correct coordinates
+        /// </summary>
+        /// <param name="entered"></param>
+        /// <param name="returned"></param>
+        [Theory]
+        [InlineData( "1", new[] { 0, 0 } )]
+        [InlineData( "2", new[] { 0, 1 } )]
+        [InlineData( "3", new[] { 0, 2 } )]
+        [InlineData( "4", new[] { 1, 0 } )]
+        [InlineData( "5", new[] { 1, 1 } )]
+        [InlineData( "6", new[] { 1, 2 } )]
+        [InlineData( "7", new[] { 2, 0 } )]
+        [InlineData( "8", new[] { 2, 1 } )]
+        [InlineData( "9", new[] { 2, 2 } )]
+        public void PositionForNumber_ReturnsCorrectCoordinates(string entered, int[] returned )
+        {
+            Position coordinates = new Position(returned[0],returned[1]);
+            Player testPlayer = new Player();
+            Position response = Player.PositionForNumber(Convert.ToInt32(entered));
+            Assert.Equal(coordinates.Row, response.Row);
+            Assert.Equal(coordinates.Column, response.Column);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(55)]
+        public void PositionForNumber_ReturnsNullForInvalidInputs(int entered)
+        {
+            Player testPlayer = new Player();
+            Assert.Null(Player.PositionForNumber(entered));
+        }
     }
 
 

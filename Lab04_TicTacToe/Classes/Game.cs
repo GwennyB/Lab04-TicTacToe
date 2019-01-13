@@ -47,7 +47,15 @@ namespace Lab04_TicTacToe.Classes
 
             Use any and all pre-existing methods in this program to help construct the method logic. 
              */
-            return PlayerOne;
+            Board.DisplayBoard();
+            while(true)
+            {
+                NextPlayer().TakeTurn(Board);
+                Board.DisplayBoard();
+                CheckForWinner(Board);
+            }
+
+            return Winner;
 		}
 
 
@@ -90,10 +98,12 @@ namespace Lab04_TicTacToe.Classes
 				if( a == "X" && b == "X"  && c == "X" )
                 {
                     Winner = PlayerOne;
+                    return true;
                 }
                 if (a == "O" && b == "O" && c == "O")
                 {
                     Winner = PlayerTwo;
+                    return true;
                 }
             }
 			return false;
