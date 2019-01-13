@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab04_TicTacToe.Classes
 {
-	class Game
+	public class Game
 	{
 		public Player PlayerOne { get; set; }
 		public Player PlayerTwo { get; set; }
@@ -82,9 +82,9 @@ namespace Lab04_TicTacToe.Classes
 				Position p2 = Player.PositionForNumber(winners[i][1]);
 				Position p3 = Player.PositionForNumber(winners[i][2]);
 
-				string a = Board.GameBoard[p1.Row, p1.Column];
-				string b = Board.GameBoard[p2.Row, p2.Column];
-				string c = Board.GameBoard[p3.Row, p3.Column];
+				string a = board.GameBoard[p1.Row, p1.Column];
+				string b = board.GameBoard[p2.Row, p2.Column];
+				string c = board.GameBoard[p3.Row, p3.Column];
 
 				// TODO:  Determine a winner has been reached. 
 				if( a == "X" && b == "X"  && c == "X" )
