@@ -47,14 +47,29 @@ namespace Lab04_TicTacToe.Classes
 
             Use any and all pre-existing methods in this program to help construct the method logic. 
              */
+            Console.Clear();
+            bool continueGame = true;
+            int playCounter = 0;
             Board.DisplayBoard();
-            while(true)
+            while(continueGame)
             {
+                playCounter++;
                 NextPlayer().TakeTurn(Board);
+                SwitchPlayer();
+                Console.Clear();
                 Board.DisplayBoard();
-                CheckForWinner(Board);
+                if(CheckForWinner(Board))
+                {
+                    continueGame = false;
+                    return Winner;
+                }
+                if (playCounter > 8)
+                {
+                    Winner = new Player();
+                    Winner.Name = "Nobody";
+                    continueGame = false;
+                }
             }
-
             return Winner;
 		}
 

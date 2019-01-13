@@ -31,8 +31,6 @@ namespace Lab04_TicTacToe.Classes
                 Console.Write("\n");
             }
             Console.WriteLine("\n\n");
-            Console.ReadLine();
-		
 		}
 	}
 }
