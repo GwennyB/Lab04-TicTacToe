@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab04_TicTacToe.Classes
 {
-	class Game
+	public class Game
 	{
 		public Player PlayerOne { get; set; }
 		public Player PlayerTwo { get; set; }
@@ -26,12 +26,13 @@ namespace Lab04_TicTacToe.Classes
 
 		/// <summary>
 		/// Activate the Play of the game
+        /// Manage game state
 		/// </summary>
 		/// <returns>Winner</returns>
 		public Player Play()
 		{
 
-			//TODO: Complete this method and utilize the rest of the class structure to play the game.
+            //TODO: Complete this method and utilize the rest of the class structure to play the game.
 
             /*
              * Complete this method by constructing the logic for the actual playing of Tic Tac Toe. 
@@ -47,6 +48,30 @@ namespace Lab04_TicTacToe.Classes
 
             Use any and all pre-existing methods in this program to help construct the method logic. 
              */
+            Console.Clear();
+            bool continueGame = true;
+            int playCounter = 0;
+            Board.DisplayBoard();
+            while(continueGame)
+            {
+                playCounter++;
+                NextPlayer().TakeTurn(Board);
+                SwitchPlayer();
+                Console.Clear();
+                Board.DisplayBoard();
+                if(CheckForWinner(Board))
+                {
+                    continueGame = false;
+                    return Winner;
+                }
+                if (playCounter > 8)
+                {
+                    Winner = new Player();
+                    Winner.Name = "Nobody";
+                    continueGame = false;
+                }
+            }
+            return Winner;
 		}
 
 
@@ -74,19 +99,29 @@ namespace Lab04_TicTacToe.Classes
 			// Given all the winning conditions, Determine the winning logic. 
 			for (int i = 0; i < winners.Length; i++)
 			{
-				Position p1 = Player.PositionForNumber(winners[i][0]);
+                // FEEDBACK TO INSTRUCTIONAL STAFF:  
+                // Using 'p1' and 'p2' here creates confusion and reduces readability since elsewhere those are used to indicate PlayerOne and PlayerTwo.
+                // Recommend changing to 'posOne', 'posTwo', 'posThree' or other var that suggests it's a Position rather than a Player.
+                Position p1 = Player.PositionForNumber(winners[i][0]);
 				Position p2 = Player.PositionForNumber(winners[i][1]);
 				Position p3 = Player.PositionForNumber(winners[i][2]);
 
-				string a = Board.GameBoard[p1.Row, p1.Column];
-				string b = Board.GameBoard[p2.Row, p2.Column];
-				string c = Board.GameBoard[p3.Row, p3.Column];
+				string a = board.GameBoard[p1.Row, p1.Column];
+				string b = board.GameBoard[p2.Row, p2.Column];
+				string c = board.GameBoard[p3.Row, p3.Column];
 
 				// TODO:  Determine a winner has been reached. 
-				// return true if a winner has been reached. 
-			
-			}
-
+				if( a == "X" && b == "X"  && c == "X" )
+                {
+                    Winner = PlayerOne;
+                    return true;
+                }
+                if (a == "O" && b == "O" && c == "O")
+                {
+                    Winner = PlayerTwo;
+                    return true;
+                }
+            }
 			return false;
 		}
 
@@ -101,7 +136,7 @@ namespace Lab04_TicTacToe.Classes
 		}
 
 		/// <summary>
-		/// End one players turn and activate the other
+		/// End one player's turn and activate the other
 		/// </summary>
 		public void SwitchPlayer()
 		{
@@ -109,16 +144,14 @@ namespace Lab04_TicTacToe.Classes
 			{
               
 				PlayerOne.IsTurn = false;
-
-              
 				PlayerTwo.IsTurn = true;
 			}
 			else
 			{
 				PlayerOne.IsTurn = true;
 				PlayerTwo.IsTurn = false;
-			}
-		}
+            }
+        }
 
 
 	}

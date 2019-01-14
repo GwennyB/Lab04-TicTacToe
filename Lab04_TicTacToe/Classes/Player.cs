@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab04_TicTacToe.Classes
 {
-    class Player
+    public class Player
     {
 		public string Name { get; set; }
 		/// <summary>
@@ -17,7 +17,11 @@ namespace Lab04_TicTacToe.Classes
 		/// </summary>
 		public bool IsTurn { get; set; }
 
-
+        /// <summary>
+        /// Prompts/accepts player's location, and converts to a Position object.
+        /// </summary>
+        /// <param name="board"> play board </param>
+        /// <returns> Position object for selected board location </returns>
 		public Position GetPosition(Board board)
 		{
 			Position desiredCoordinate = null;
@@ -31,7 +35,11 @@ namespace Lab04_TicTacToe.Classes
 
 		}
 
-
+        /// <summary>
+        /// Instantiates a Position object with the correct coordinates for the player's chosen play location
+        /// </summary>
+        /// <param name="position"> board location marker number </param>
+        /// <returns> position object for specified board location </returns>
 		public static Position PositionForNumber(int position)
 		{
 			switch (position)
@@ -50,7 +58,12 @@ namespace Lab04_TicTacToe.Classes
 			}
 		}
 
-	
+        /// <summary>
+        /// Gets current player's location selection.
+        /// Validates that the chosen location is available.
+        /// Marks board with current player's marker at chosen location.
+        /// </summary>
+        /// <param name="board"> play board </param>
 		public void TakeTurn(Board board)
 		{
 			IsTurn = true;
@@ -66,6 +79,8 @@ namespace Lab04_TicTacToe.Classes
 			else
 			{
 				Console.WriteLine("This space is already occupied");
+                // bug fix:
+                TakeTurn(board);
 			}
 		}
 	}

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab04_TicTacToe.Classes
 {
-    class Board
+    public class Board
     {
 		/// <summary>
 		/// Tic Tac Toe Gameboard states
@@ -16,12 +16,23 @@ namespace Lab04_TicTacToe.Classes
 			{"7", "8", "9"},
 		};
 
-
+        /// <summary>
+        /// Displays the game board in its current state of play
+        /// </summary>
 		public void DisplayBoard()
 		{
-			
-			//TODO: Output the board to the console
-		
+            Console.WriteLine("\n Let's Play Tic-Tac-Toe!\n");
+            //TODO: Output the board to the console
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Write("     ");
+                for (int k = 0; k < 3; k++)
+                {
+                    Console.Write($" [ {GameBoard[i, k]} ] ");
+                }
+                Console.Write("\n");
+            }
+            Console.WriteLine("\n\n");
 		}
 	}
 }
